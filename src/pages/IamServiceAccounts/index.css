@@ -1,0 +1,7 @@
+.iam_service{
+    background-image: linear-gradient(to top, #2f3545, #1d212c);
+        height: calc(100% - 3rem);
+}
+.text {
+    color: white
+}

@@ -1,0 +1,17 @@
+/* .safe_page{
+    background-image: linear-gradient(to top, #2f3545, #1d212c);
+    height: calc(100% - 3rem);
+} */
+.text{
+    color:white;
+}
+.section{
+padding: 3.3rem 11rem;
+    background-image: linear-gradient(to top, #2f3545, #1d212c);
+    background-color: #151820;
+        display: flex;
+        width: 100%;
+        height: calc(100% - 4rem);
+        justify-content: space-between;
+        align-items: center;
+}
