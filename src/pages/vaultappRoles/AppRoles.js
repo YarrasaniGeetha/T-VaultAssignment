@@ -2,7 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import "./index.css";
 const AppRoles = () => {
-  const [searchparams, setSearchParams] = useSearchParams();
+  const [searchparams] = useSearchParams();
   const name = searchparams.get("data");
   return (
     <div className="app_roles">
