@@ -4,7 +4,7 @@ import "./index.css";
 import IconSafe from "./icon_safe.svg";
 import { addSafe } from "../../../Redux/safe/safeActions";
 import { useDispatch } from "react-redux";
-import activeIndex from "../../../Redux/safe/safeActions";
+//import activeIndex from "../../../Redux/safe/safeActions";
 
 const CreateForm = ({ closeSafe, editFormVisibility }) => {
   const initialData = {
