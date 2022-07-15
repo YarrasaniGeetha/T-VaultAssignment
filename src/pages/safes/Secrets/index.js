@@ -1,13 +1,13 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import "./secrets.css";
 import folderPlus from "./folder-plus 1.svg";
 import AddSecret from "./AddSecret";
 import SecretImage from "./img_secrets.svg";
 import { useSelector } from "react-redux/es/exports";
-import SafesList from "../AllSafes/safeList";
-import addReducer from "../../../Redux/safe/addReducer";
-import { activeIndex } from "../../../Redux/safe/safeActions";
-import { useDispatch } from "react-redux";
+// import SafesList from "../AllSafes/safeList";
+// import addReducer from "../../../Redux/safe/addReducer";
+// import { activeIndex } from "../../../Redux/safe/safeActions";
+// import { useDispatch } from "react-redux";
 
 function Secrets() {
   const safes = useSelector((state) => state.add.safesList);

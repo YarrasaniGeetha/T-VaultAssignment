@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import CreateForm from "../components/SafeForm";
-import addReducer from "../../../Redux/safe/addReducer";
+// import CreateForm from "../components/SafeForm";
+// import addReducer from "../../../Redux/safe/addReducer";
 import { useSelector } from "react-redux/es/exports";
 import safeCard from "./safecard_img.svg";
 import editList from "./edit.svg";
 import deleteList from "./delete_List.svg";
 import {
   deleteSafe,
-  editSafe,
   activeIndex,
   activeSafeDelete,
 } from "../../../Redux/safe/safeActions";
@@ -17,10 +16,10 @@ import { useDispatch } from "react-redux";
 function SafesList() {
   const safes = useSelector((state) => state.add.safesList);
   //const activeSafe = useSelector((state) => state.add.activeIndex);
-  const [editOpen, setEditOpen] = useState(false);
-  const editClickOpen = () => {
-    setEditOpen(true);
-  };
+  // const [editOpen, setEditOpen] = useState(false);
+  // const editClickOpen = () => {
+  //   setEditOpen(true);
+  // };
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   //const [active, setActive] = useState("");
@@ -41,10 +40,10 @@ function SafesList() {
     ///dispatch(activeIndex());
   };
 
-  const handleEdit = (e, id) => {
-    e.preventDefault();
-    dispatch(editSafe(id));
-  };
+  // const handleEdit = (e, id) => {
+  //   e.preventDefault();
+  //   dispatch(editSafe(id));
+  // };
   // function toggleActive(index) {
   //   setActive({ ...active, activeSafe: safes(index) });
   // }
@@ -72,7 +71,7 @@ function SafesList() {
                     <img
                       src={editList}
                       alt="edit Icon"
-                      onClick={editClickOpen}
+                      //onClick={editClickOpen}
                       //onClick={(e) => handleEdit(e, item)}
                     />
                   </span>

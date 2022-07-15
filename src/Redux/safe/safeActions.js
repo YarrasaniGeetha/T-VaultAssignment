@@ -1,5 +1,5 @@
 import * as actionTypes from "./safeTypes";
-import { createSlice } from "@reduxjs/toolkit";
+// import { createSlice } from "@reduxjs/toolkit";
 
 export const addSafe = (safeValues) => {
   // console.log(safeValues);
@@ -25,9 +25,9 @@ export const activeSafeDelete = (ids) => {
   };
 };
 export const editSafe = (safeValues) => {
-  const safeSlice = createSlice({
-    editSafe: safeValues,
-  });
+  // const safeSlice = createSlice({
+  //   editSafe: safeValues,
+  // });
   return {
     type: actionTypes.EDIT_SAFE,
     payload: safeValues,

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import SafesList from "./safeList";
 import SearchBar from "../../../component/SearchBar";
 import CreateSafe from "../components/create";
-import safes from "../AllSafes/safeList";
+//import safes from "../AllSafes/safeList";
 
 const AllSafes = () => {
   const safes = useSelector((state) => state.add.safesList);
