@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./component/Navbar/navbar";
 import Safe from "./pages/safes/index";
 import Service from "./pages/serviceAccounts/service";
@@ -13,11 +18,12 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/*" element={<Safe />} />
+          <Route path="/safes" element={<Safe />} />
           <Route path="/vault" element={<AppRoles />} />
           <Route path="/service" element={<Service />} />
           <Route path="/iam" element={<IamService />} />
           <Route path="/azure" element={<Azure />} />
+          <Route path="*" element={<Navigate to="/safes" />} />
         </Routes>
       </Router>
     </div>
