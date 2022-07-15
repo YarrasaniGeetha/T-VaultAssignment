@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./secrets.css";
-import Secrets from "../Secrets/index";
-import { useDispatch } from "react-redux";
+//import Secrets from "../Secrets/index";
+//import { useDispatch } from "react-redux";
 function AddSecret({ closeSecret }) {
-  const [secretValue, setSecretValue] = useState("");
-  // const dispatch = useDispatch();
-  const handleChange = (e) => {
-    setSecretValue(e.target.value);
-  };
+  // const [secretValue, setSecretValue] = useState("");
+  // // const dispatch = useDispatch();
+  // const handleChange = (e) => {
+  //   setSecretValue(e.target.value);
+  // };
   //   setSecretValue({ ...secretValue, [name]: value });
   // const saveClick = (e) => {
   //   e.preventDefault();
@@ -38,7 +38,7 @@ function AddSecret({ closeSecret }) {
             name="folderName"
             type="text"
             // value={secretValue.folderName}
-            onChange={handleChange}
+            // onChange={handleChange}
             placeholder="Folder Name"
           ></input>
           <div className="secret_info">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
-import { SafesList } from "../../pages/safes/AllSafes/safeList";
+//import { SafesList } from "../../pages/safes/AllSafes/safeList";
 
 function SearchBar() {
   const [search, setSearch] = useState("");
