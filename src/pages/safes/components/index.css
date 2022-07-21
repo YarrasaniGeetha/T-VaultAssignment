@@ -97,3 +97,17 @@ justify-content: flex-end;
         height: 100%;
         background: rgba(0, 0, 0, 0.7);
 }
+.plusimage{
+    bottom: 2.5rem;
+        right: 3rem;
+        position: absolute;
+   
+}
+.update_button{
+    height: 2.25rem;
+        width: 5.93rem;
+        font-weight: bold;
+    cursor: pointer;
+        background: #e20074;
+        color: #fff;
+}

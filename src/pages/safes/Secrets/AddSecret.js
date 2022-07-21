@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./secrets.css";
-//import Secrets from "../Secrets/index";
-//import { useDispatch } from "react-redux";
-function AddSecret({ closeSecret }) {
+import { addSecretData } from "../../../Redux/safe/safeActions";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+
+function AddSecret({ closeSecret, safesData }) {
+  const secretData = {
+    id: uuidv4(),
+    folderName: "",
+  };
+
+  const [secretValue, setSecretValue] = useState(secretData);
+  const handleInput = (e) => {
+    console.log(e.target);
+    const { name, value } = e.target;
+    setSecretValue({ ...secretValue, [name]: value });
+    console.log(secretValue);
+  };
+  const dispatch = useDispatch();
+  const addSecret = (e) => {
+    let safes = { ...safesData };
+
+    let secretArray = [...safes.secret];
+    console.log("hi");
+    secretArray.push(secretValue);
+    safes.secret = secretArray;
+    //safes.secrets.push(secretValue);
+    console.log("ALL DATA", safes);
+    dispatch(addSecretData(safes));
+    closeSecret(false);
+  };
   // const [secretValue, setSecretValue] = useState("");
   // // const dispatch = useDispatch();
   // const handleChange = (e) => {
@@ -27,7 +54,7 @@ function AddSecret({ closeSecret }) {
 
   return (
     <div className="overlay_secret">
-      <form className="secret_form">
+      <div className="secret_form">
         <div className="folder_header">
           <h1 className="f_header">Add Folder</h1>
         </div>
@@ -37,25 +64,45 @@ function AddSecret({ closeSecret }) {
             className="input_folder"
             name="folderName"
             type="text"
-            // value={secretValue.folderName}
-            // onChange={handleChange}
+            maxLength={25}
+            value={secretValue.folderName}
+            onChange={handleInput}
             placeholder="Folder Name"
           ></input>
           <div className="secret_info">
-            Please enter a minimum of 3 characters lowercase alphabets numbebr
+            Please enter a minimum of 3 characters lowercase alphabets number
             and underscores only.
           </div>
         </div>
         <div className="add_secret_buttons">
-          <button className="cancel_button" onClick={() => closeSecret(false)}>
-            Cancel
-          </button>
-          <button className="save_button">Save</button>
+          <div
+            className="secret_cancel_button"
+            onClick={() => closeSecret(false)}
+          >
+            <div className="secret_text">Cancel</div>
+          </div>
+          {secretValue.folderName !== "" ? (
+            <div className="save_button">
+              <div
+                className="save_secret"
+                minLength={3}
+                onClick={() => addSecret()}
+              >
+                Save
+              </div>
+            </div>
+          ) : (
+            <div className="save_button">
+              <div className="save_secretd" disabled={true}>
+                Save
+              </div>
+            </div>
+          )}
           {/* <button className="save_button" onClick={() => closeSecret(false)}>
             Save
           </button> */}
         </div>
-      </form>
+      </div>
     </div>
   );
 }

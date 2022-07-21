@@ -12,22 +12,37 @@ import {
   activeSafeDelete,
 } from "../../../Redux/safe/safeActions";
 import { useDispatch } from "react-redux";
+import EditSafe from "../components/edit";
+//import Timestamp from "react-timestamp";
+import moment from "moment/moment.js";
 
-function SafesList() {
+function SafesList(props) {
   const safes = useSelector((state) => state.add.safesList);
-  //const activeSafe = useSelector((state) => state.add.activeIndex);
-  // const [editOpen, setEditOpen] = useState(false);
+
+  const activeSafe = useSelector((state) => state.add.activeIndex);
+
+  //// const [search, setEditOpen] = useState("");
   // const editClickOpen = () => {
   //   setEditOpen(true);
   // };
+  // const filteredData = useSelector((state) => state.add.filteredList);
+  // const filteredCount = filteredData.length;
+  // console.log("FILTER", filteredData);
+  const [edit, setEdit] = useState(false);
+  const editClick = () => {
+    setEdit(true);
+    console.log("Clicked");
+  };
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+
   //const [active, setActive] = useState("");
   useEffect(() => {
     if (safes.length > 0) {
       setData(safes);
     }
   }, [safes, data]);
+  console.log("ALL DATA", data);
   const deletesafeAction = (e, id) => {
     // console.log("Called");
     e.stopPropagation();
@@ -36,60 +51,117 @@ function SafesList() {
   };
   const Activesafe = (item) => {
     //console.log("activeid");
+
     dispatch(activeIndex(item));
+
     ///dispatch(activeIndex());
   };
 
-  // const handleEdit = (e, id) => {
-  //   e.preventDefault();
-  //   dispatch(editSafe(id));
-  // };
-  // function toggleActive(index) {
-  //   setActive({ ...active, activeSafe: safes(index) });
-  // }
   return (
     <div className="all_safe_list">
-      <ul className="list">
-        {/* {console.log("abd", data)} */}
+      {console.log("abd", props.item.length)}
+      {console.log("saveList", data.length)}
+      {props.item && props.item.length >= 0
+        ? props.item.map((item, index) => {
+            return (
+              <ul className="list">
+                <li
+                  className="safeItem"
+                  onClick={() => Activesafe(item)}
+                  key={item.id}
+                  safesdata={safes}
+                  style={{
+                    background:
+                      item.id === activeSafe.id
+                        ? "linear-gradient(to right, #72134b, #1d212c)"
+                        : "black",
+                  }}
+                >
+                  <div className="card">
+                    <img src={safeCard} alt="safe_icon" />
+                    <div className="card_info">
+                      <div className="card_name">{item.safeName}</div>
+                      <div className="card_time">
+                        Last Updated:{moment().startOf("minute").fromNow()}
+                      </div>
+                      {/* <Timestamp date={Date} />; */}
+                    </div>
 
-        {data.map((item, index) => {
-          return (
-            <li
-              className="safeItem"
-              onClick={() => Activesafe(item)}
-              key={item.id}
-            >
-              <div className="card">
-                <img src={safeCard} alt="safe_icon" />
-                <div className="card_info">
-                  <div className="card_name">{item.safeName}</div>
-                  <div className="card_time">Last Seen 10AM</div>
-                </div>
+                    <div className="card_actions">
+                      <span className="edit_card">
+                        <img
+                          className="editCard"
+                          src={editList}
+                          alt="edit Icon"
+                          onClick={(e) => editClick(e, item)}
+                        />
+                      </span>
+                      <span className="delete_card">
+                        <img
+                          src={deleteList}
+                          alt="delete Icon"
+                          //onClick={() => dispatch(deleteSafe(item.id))}
+                          onClick={(e) => deletesafeAction(e, item.id)}
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            );
+          })
+        : data &&
+          data.length > 0 &&
+          data.map((item, index) => {
+            return (
+              <ul className="list">
+                <li
+                  className="safeItem"
+                  onClick={() => Activesafe(item)}
+                  key={item.id}
+                  safesdata={safes}
+                  style={{
+                    background:
+                      item.id === activeSafe.id
+                        ? "linear-gradient(to right, #72134b, #1d212c)"
+                        : "black",
+                  }}
+                >
+                  <div className="card">
+                    <img src={safeCard} alt="safe_icon" />
+                    <div className="card_info">
+                      <div className="card_name">{item.safeName}</div>
+                      <div className="card_time">
+                        Last Updated:{moment().startOf("minute").fromNow()}
+                      </div>
+                      {/* <Timestamp date={Date} />; */}
+                    </div>
 
-                <div className="card_actions">
-                  <span className="edit_card">
-                    <img
-                      src={editList}
-                      alt="edit Icon"
-                      //onClick={editClickOpen}
-                      //onClick={(e) => handleEdit(e, item)}
-                    />
-                  </span>
-                  <span className="delete_card">
-                    <img
-                      src={deleteList}
-                      alt="delete Icon"
-                      //onClick={() => dispatch(deleteSafe(item.id))}
-                      onClick={(e) => deletesafeAction(e, item.id)}
-                    />
-                  </span>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-        {/* <CreateForm editopen={edit} setEdit={setEdit} /> */}
-      </ul>
+                    <div className="card_actions">
+                      <span className="edit_card">
+                        <img
+                          className="editCard"
+                          src={editList}
+                          alt="edit Icon"
+                          onClick={(e) => editClick(e, item)}
+                        />
+                      </span>
+                      <span className="delete_card">
+                        <img
+                          src={deleteList}
+                          alt="delete Icon"
+                          //onClick={() => dispatch(deleteSafe(item.id))}
+                          onClick={(e) => deletesafeAction(e, item.id)}
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            );
+          })}
+
+      <div className="modal">{edit && <EditSafe closeSafe={setEdit} />}</div>
     </div>
   );
 }

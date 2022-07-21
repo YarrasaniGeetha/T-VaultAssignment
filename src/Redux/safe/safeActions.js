@@ -33,15 +33,28 @@ export const editSafe = (safeValues) => {
     payload: safeValues,
   };
 };
-export const addSecret = (secretValue) => {
+export const addSecretData = (secretValue) => {
+  //console.log("Secret", secretValue);
   return {
     type: actionTypes.ADD_SECRET,
     payload: secretValue,
+  };
+};
+export const deletesecret = (ids) => {
+  return {
+    type: actionTypes.DELETE_SECRET,
+    payload: ids,
   };
 };
 export const activeIndex = (active) => {
   return {
     type: actionTypes.ACTIVE_INDEX,
     payload: active,
+  };
+};
+export const searchsafe = (value) => {
+  return {
+    type: actionTypes.SEARCH_SAFE,
+    payload: value,
   };
 };

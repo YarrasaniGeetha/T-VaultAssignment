@@ -3,35 +3,34 @@ import PlusImage from "./PlusImage.svg";
 import CreateForm from "../components/SafeForm";
 import "./index.css";
 // import { Modal, ModalHeader } from "reactstrap";
-function CreateSafe(editFormVisibility) {
+import { useSelector } from "react-redux/es/exports";
+function CreateSafe() {
+  const safes = useSelector((state) => state.add.safesList);
   const [safe, setsafe] = useState(false);
   const handleClickOpen = () => {
     setsafe(true);
   };
-  // const createClick = () => {
-  //   setmodal(modal);
-  // };
-  // function makeBlur() {
-  //   document.body.style.opacity = 0.5;
-  // }
+
   return (
-    <>
-      <div className="create_safe_form">
-        {/* <Modal size="lg" isOpen={modal} toggle={() => setmodal(!modal)}>
-        <ModalHeader toggle={() => setmodal(!modal)}>{CreateForm}</ModalHeader>
-      </Modal> */}
+    <div className="create_safe_form">
+      {safes && safes.length < 1 ? (
         <img
           className="plusImage"
           src={PlusImage}
           onClick={handleClickOpen}
           alt="Plus Icon"
         />
-        {/* <div>{modal ? { CreateForm } : ""}</div> */}
-        <div className="modal">
-          {safe && <CreateForm closeSafe={setsafe} />}
-        </div>
-      </div>
-    </>
+      ) : (
+        <img
+          className="plusimage"
+          src={PlusImage}
+          onClick={handleClickOpen}
+          alt="Plus Icon"
+        />
+      )}
+
+      <div className="modal">{safe && <CreateForm closeSafe={setsafe} />}</div>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ import { addSafe } from "../../../Redux/safe/safeActions";
 import { useDispatch } from "react-redux";
 //import activeIndex from "../../../Redux/safe/safeActions";
 
-const CreateForm = ({ closeSafe, editFormVisibility }) => {
+const CreateForm = ({ closeSafe }) => {
   const initialData = {
     safeName: "",
     ownerName: "",
@@ -73,6 +73,7 @@ const CreateForm = ({ closeSafe, editFormVisibility }) => {
           <input
             className="input_name"
             name="safeName"
+            maxLength={15}
             type="text"
             placeholder="Safe Name"
             value={safeValues.safeName}
@@ -108,6 +109,7 @@ const CreateForm = ({ closeSafe, editFormVisibility }) => {
           <textarea
             className="input_name"
             name="Description"
+            maxLength={25}
             minLength={10}
             id="description"
             type="text"
