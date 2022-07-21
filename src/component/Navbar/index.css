@@ -42,15 +42,13 @@ padding:1.4rem;
         color: white;
        
 }
-/* .nav_list li{
-    width: 20%;
-} */
+
 .nav_list li:hover{
     background-image: linear-gradient(to top, #72134b, #1d212c);
     
 }
 .logo{
-    /* font-size: 24px; */
+    
         font-weight: bold;
     width: 15%;
     color: white;
@@ -62,8 +60,7 @@ padding:1.4rem;
 }
 .profile{
     width: 19%;
-        /* display: flex;
-        justify-content: space-between; */
+       
         color: white;
         font-size: 14px;
         font-weight: bold;

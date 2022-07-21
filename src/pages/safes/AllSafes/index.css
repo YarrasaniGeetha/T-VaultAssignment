@@ -1,6 +1,6 @@
 .left_content{
    
-        /* border-block-color: white; */
+
         background-color: #151820;
         font-size: 19px;
             font-weight: bold;
@@ -26,7 +26,7 @@ height: 4rem;
 }
 .safes_section{
 width: 100%;
-/* height: calc(100% - 4.6rem); */
+
 display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +42,7 @@ display: flex;
     justify-content: center;
     position: relative;
     align-items: center;
-    /* background-image: url("../AllSafes/safes.svg"); */
+
     
 }
 .Default_safe_Image{
@@ -55,9 +55,7 @@ display: flex;
     color:white
    
 }
-/* .plusImage{
-    /* margin-top: 2rem; */
-*/
+
 .safe_image{
     width: 45%;
         padding-top: 4rem;
