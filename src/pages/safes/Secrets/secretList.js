@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux/es/exports";
 import secretCard from "./secret.svg";
 import deleteSecret from "./delete.svg";
