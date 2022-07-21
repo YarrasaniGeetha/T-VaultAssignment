@@ -79,23 +79,23 @@ function AddSecret({ closeSecret, safesData }) {
             className="secret_cancel_button"
             onClick={() => closeSecret(false)}
           >
-            <div className="secret_text">Cancel</div>
+            <button className="secret_cancel_button">Cancel</button>
           </div>
           {secretValue.folderName !== "" ? (
             <div className="save_button">
-              <div
+              <button
                 className="save_secret"
                 minLength={3}
                 onClick={() => addSecret()}
               >
                 Save
-              </div>
+              </button>
             </div>
           ) : (
             <div className="save_button">
-              <div className="save_secretd" disabled={true}>
+              <button className="save_secretd" disabled={true}>
                 Save
-              </div>
+              </button>
             </div>
           )}
           {/* <button className="save_button" onClick={() => closeSecret(false)}>
